@@ -1,0 +1,41 @@
+.\" Manpage for ejaaba.
+.\" Contact Alsaraha (github) to correct errors or typos.
+.TH man 1 "06 July 2018" "1.0" "nuseradd man page"
+.SH NAME
+ejaaba \- ask and answer questions at ejaaba.com
+.SH SYNOPSIS
+ejaaba <command> [<args>]
+.SH DESCRIPTION
+ejaaba is a shell script that helps in asking and answering questions at ejaaba.com without using a browser.
+.SH OPTIONS
+.IP "clear"
+.RS
+Clear all the cookies that are stored at ~/.ejaaba
+.RE
+.IP "login"
+.RS
+Login to ejaaba.com will prompt for email and password.
+.RE
+.IP "check"
+.RS
+Check if you are logged in
+.RE
+.IP "ask <title> <details> <reward> <categories> <extra>"
+.RS
+Ask a question If not specified defaults are used. extra can be a user ID.
+.RE
+.IP "delete <id>"
+.RS
+Delete the question with that id.
+.RE
+.IP "reply <id>"
+.RS
+Reply to the question with that id.
+.RE
+.SH SEE ALSO
+curl(1), grep(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Alsaraha (github)
+

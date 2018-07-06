@@ -1,0 +1,50 @@
+#!/bin/bash
+[ -e ~/.ejaaba ] || mkdir ~/.ejaaba
+cd ~/.ejaaba
+if [[ "$PWD" != ~/.ejaaba ]]
+then
+	echo "cannot cd to ~/.ejaaba"
+	exit 1
+fi
+case $1 in
+	clear)
+		rm ~/.ejaaba/*
+		if [[ `ls ~/.ejaaba | wc -l` == 0 ]]
+		then
+			echo "~/.ejaaba/* no longer exists"
+		else
+			echo "can not clear ~/.ejaaba/*"
+		fi
+		;;
+	login)
+		set +o history
+		read -p "Type your email: " email
+		read -s -p "Type your password: " password
+		echo
+		echo loading please wait
+		set -o history
+		curl -s -L -b ./ejaaba_cookies -c ./ejaaba_cookies -d "_token=`curl -s -c ./ejaaba_cookies 'https://ejaaba.com/login' | grep -oP '(?<=token" value=").[^"]*'`" -d "email=$email" -d "password=$password" 'https://ejaaba.com/login' | grep -q "userlinks" && echo "You've successfully logged in!" || echo "Wrong username or password"
+		unset email; unset password
+		;;
+	ask)
+		[[ "$2" == "" ]] && title="مرحباً" || title="$2"
+		[[ "$3" == "" ]] && details="" || details="$3"
+		[[ "$4" == "" ]] && reward="5" || reward="$4"
+		[[ "$5" == "" ]] && categories="الدردشة" || categories="$5"
+		[[ "$6" == "" ]] && extra="&askingUser=14032" || extra="&askingUser=$6"
+		[[ "$6" == "-" ]] && extra=""
+		curl -L -s -b ./ejaaba_cookies -c ./ejaaba_cookies -d "_token=`curl -s -b ./ejaaba_cookies -c ./ejaaba_cookies 'https://ejaaba.com/ask' | grep -oP '(?<=token" value=").[^"]*' | head -n1`" --data-urlencode "title=$title" --data-urlencode "details=$details" -d "reward=$reward" -d "categories[]=$categories$extra" 'https://ejaaba.com/ask' > /tmp/ejaaba_page; cat /tmp/ejaaba_page | grep -oP '(?<=data-id=")[^"]*' || cat /tmp/ejaaba_page | grep error
+		;;
+	check)
+		curl -L -s -b ./ejaaba_cookies -c ./ejaaba_cookies "https://ejaaba.com" | grep 'fa-home' && echo You are logged in || echo You are not logged in
+		;;
+	delete)
+		[[ "$2" == "" ]] && id="مرحباً" || id="$2"
+		curl -s -b ./ejaaba_cookies -c ./ejaaba_cookies -H 'X-CSRF-TOKEN: '`curl -L -s -b ./ejaaba_cookies -c ./ejaaba_cookies "https://ejaaba.com/$id" | grep -oP '(?<=csrf-token" content=")[^"]*'` --data '' "https://ejaaba.com/question/delete/$id" > /tmp/ejaaba_delete; [[ `cat /tmp/ejaaba_delete | wc -c` == "0" ]] && echo Success
+		;;
+	reply)
+		[[ "$2" == "" ]] && id="مرحباً" || id="$2"
+		[[ "$3" == "" ]] && replyContent="مرحباً" || replyContent="$3"
+		curl -s -b ./ejaaba_cookies -c ./ejaaba_cookies -H 'X-CSRF-TOKEN: '`curl -L -s -b ./ejaaba_cookies -c ./ejaaba_cookies "https://ejaaba.com/$id" | grep -oP '(?<=csrf-token" content=")[^"]*'` --data-urlencode "replyContent=$replyContent" --data '' "https://ejaaba.com/question/$id/save-reply" | grep "panel-head" || echo Success
+		;;
+esac;
