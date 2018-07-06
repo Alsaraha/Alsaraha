@@ -7,6 +7,9 @@ then
 	exit 1
 fi
 case $1 in
+	notifications)
+		curl -s -L -b ./ejaaba_cookies -c ./ejaaba_cookies 'https://ejaaba.com' | grep 'data-count'
+	;;
 	clear)
 		rm ~/.ejaaba/*
 		if [[ `ls ~/.ejaaba | wc -l` == 0 ]]
