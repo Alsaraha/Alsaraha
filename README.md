@@ -1,10 +1,13 @@
 # Alsaraha
 
-## Installation
+## ejaaba
 
+### Installation
+```bash
     chmod +x install.sh && ./install.sh
- 
-## Usage
+```
+
+### Usage
 
        clear
               Clear all the cookies that are stored at ~/.ejaaba
@@ -24,3 +27,21 @@
 
        reply <id>
               Reply to the question with that id.
+
+## vertical figlet
+
+### Usage with extra fonts
+
+    git clone https://github.com/xero/figlet-fonts.git
+    cd figlet-fonts
+    chmod +x ../vertical_figlet_draw.sh
+    ../vertical_figlet_draw.sh
+
+### Usage
+    chmod +x vertical_figlet_draw.sh
+    ./vertical_figlet_draw.sh
+
+## Maths Equation
+
+## Usage
+    apply a change to the equation
