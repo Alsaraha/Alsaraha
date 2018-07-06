@@ -44,4 +44,4 @@
 ## Maths Equation
 
 ## Usage
-    apply a change to the equation
+apply a change to the equation
