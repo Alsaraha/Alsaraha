@@ -28,6 +28,9 @@
        reply <id>
               Reply to the question with that id.
 
+       notifications
+              Check for notifications
+
 ## vertical figlet
 
 ### Usage with extra fonts
