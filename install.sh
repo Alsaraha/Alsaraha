@@ -1,4 +1,5 @@
-[[ ":$PATH:" == *":$HOME/bin:"* ]] || echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+mkdir -p ~/bin
+[[ ":$PATH:" == *":$HOME/bin:"* ]] || (echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc; export PATH=$PATH:$HOME/bin)
 mkdir -p ~/.ejaaba
 cp ejaaba ~/bin/ejaaba
 echo 'Authentication for making man page directory'

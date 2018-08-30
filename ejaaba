@@ -50,4 +50,9 @@ case $1 in
 		[[ "$3" == "" ]] && replyContent="مرحباً" || replyContent="$3"
 		curl -s -b ./ejaaba_cookies -c ./ejaaba_cookies -H 'X-CSRF-TOKEN: '`curl -L -s -b ./ejaaba_cookies -c ./ejaaba_cookies "https://ejaaba.com/$id" | grep -oP '(?<=csrf-token" content=")[^"]*'` --data-urlencode "replyContent=$replyContent" --data '' "https://ejaaba.com/question/$id/save-reply" | grep "panel-head" || echo Success
 		;;
+	upload)
+		[ -s $2 ] &&
+		curl -s -b ./ejaaba_cookies -c ./ejaaba_cookies -H 'X-CSRF-TOKEN: '`curl -L -s -b ./ejaaba_cookies -c ./ejaaba_cookies "https://ejaaba.com/ask" | grep -oP '(?<=csrf-token" content=")[^"]*'` -F 'file=@'$2 "https://ejaaba.com/upload" | sed 's/{"url":"\|\\\|"}//g' ||
+		echo 'Check the file'
+		;;
 esac;

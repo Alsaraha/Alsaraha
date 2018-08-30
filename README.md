@@ -31,6 +31,10 @@
        notifications
               Check for notifications
 
+       upload
+              Upload an image
+
+
 ## vertical figlet
 
 ### Usage with extra fonts
