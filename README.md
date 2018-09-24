@@ -31,9 +31,11 @@
        notifications
               Check for notifications
 
-       upload
-              Upload an image
+       upload <file>
+              Upload the local file
 
+       message <id> <message> 
+              message the user with that id with the message.
 
 ## vertical figlet
 
