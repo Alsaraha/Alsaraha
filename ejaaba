@@ -58,7 +58,7 @@ case $1 in
 	message)
 	    CR=$(printf '\r')
 	    [[ "$2" == "" ]] && (echo 'No responder is specified' && exit 1) || to="$2"
-	    [[ "$3" == "" ]] && (echo 'No message is specified' && exit 1) ||  message="${3//$'\n'/'\r\n'}"
+	    [[ "$3" == "" ]] && (echo 'No message is specified' && exit 1) ||  message="${3//$'\n'/$'\r\n'}"
 	    curl -L -s -b ./ejaaba_cookies -c ./ejaaba_cookies -d "_token=`curl -s -b ./ejaaba_cookies -c ./ejaaba_cookies 'https://ejaaba.com/' | grep -oP '(?<=token" value=").[^"]*' | head -n1`" --data-urlencode "message=$message" 'https://ejaaba.com/create-conversation/'"$to" > /tmp/ejaaba_page; cat /tmp/ejaaba_page | grep "<div>محادثة مع <a href=\\\"https://ejaaba.com/u/" && echo 'Sent' || echo 'Error'
 	    ;;
 esac;
