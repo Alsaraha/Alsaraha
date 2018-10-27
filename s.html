@@ -1,0 +1,278 @@
+<!doctype html>
+<html dir="rtl">
+    <meta charset="utf-8">
+    <style>
+     textarea {
+	 cursor: pointer;
+	 margin-left: 40px;
+	 color: #DDD;
+	 font-family: sans;
+	 border: 1px solid #DDD;
+	 border-radius: 30px;
+	 font-size: 50px;
+	 background-color: #EEE;
+	 width: 90px;
+	 height: 90px;
+	 resize: none;
+	 overflow: hidden;
+	 text-align: center;
+	 -moz-user-select: none;
+	 -khtml-user-select: none;
+	 -webkit-user-select: none;
+	 -ms-user-select: none;
+	 user-select: none;
+     }
+     input {
+	 font-size: 45px;
+	 height: 90px;
+	 width: 80%;
+     }
+     button {
+	 font-size: 45px;
+	 height: 90px;
+	 width: 10%;
+     }
+     textarea:hover {
+	 color: #DDE;
+	 border: 1px solid #DDE;
+     }
+     textarea:active{
+	 background:olive;
+     }
+     textarea:focus {
+	 color: transparent;
+	 text-shadow: 0px 0px 0px #666;
+	 border: 1px solid red;
+	 outline: 2px;
+     }
+     @font-face {
+	 font-family: quran;
+	 src: url(Alkalami-1.100/Alkalami-Regular.ttf);
+     } 
+     div {
+	 border-bottom: 1px solid #AAA;
+	 //background-color: #FAFAFA;
+	 background-color: #EEE;
+	 border-radius: 80px;
+	 font-family: quran;
+	 font-size: 50px;
+	 margin-right: 80px;
+	 margin-bottom: 30px;
+	 display: block;
+	 padding-left: 70px;
+	 padding-right: 70px;
+     }
+     main {
+	 margin-top: 80px;
+	 text-align: center;
+     }
+     h1, select {
+	 border: 0;
+	 style: none;
+	 font-size: 80px;
+	 font-weight: bold;
+	 margin: 0;
+	 background-color: #DDD;
+	 color: #AAA;
+	 text-align: center;
+	 width: 100%;
+     }
+     html {
+	 background-color: #CCC;
+     }
+     section {
+	 margin-top: 50px;
+     }
+     /* COPIED */
+     @import url(https://fonts.googleapis.com/css?family=Comfortaa:400,700,300);
+
+     *,html{margin:0;padding:0}
+
+     //variables
+     $baseColor : #e74c3c;
+     $fontColor : #fff;
+
+     body{
+	 background: $baseColor;
+	 text-align: center;
+	 font-family: 'Comfortaa', cursive;
+     }
+     svg{
+	 width: 100px;
+	 height: 100px;
+	 margin: 20px;
+	 display:inline-block;
+     }
+
+     //follow me template
+     .made-with-love{
+	 margin-top: 20px;
+	 padding: 10px;
+	 font-size: 10px;
+	 font-family: arial;
+	 color: #fff;
+	 i{
+	     font-style: normal;
+	     color: #F50057;
+	     font-size: 14px;
+	     position: relative;
+	     top: 2px;
+	 }
+	 a{
+	     color: #fff;
+	     text-decoration: none;
+	     &:hover{
+		 text-decoration: underline;
+	     }
+	 }
+     }
+    </style>
+    <main>
+	<h1>البحث في آيات القرآن</h1>
+	<br>
+	<input>
+	<button onclick="search()">بحث</button>
+	<!-- Loader1 -->
+	<svg style="display: none;" version="1.1" id="L1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+	    <circle fill="none" stroke="blue" stroke-width="6" stroke-miterlimit="15" stroke-dasharray="14.2472,14.2472" cx="50" cy="50" r="47" >
+		<animateTransform 
+		    attributeName="transform" 
+		    attributeType="XML" 
+		    type="rotate"
+		    dur="5s" 
+		    from="0 50 50"
+		    to="360 50 50" 
+		    repeatCount="indefinite" />
+	    </circle>
+	    <circle fill="none" stroke="blue" stroke-width="1" stroke-miterlimit="10" stroke-dasharray="10,10" cx="50" cy="50" r="39">
+		<animateTransform 
+		    attributeName="transform" 
+		    attributeType="XML" 
+		    type="rotate"
+		    dur="5s" 
+		    from="0 50 50"
+		    to="-360 50 50" 
+		    repeatCount="indefinite" />
+	    </circle>
+	    <g fill="blue">
+		<rect x="30" y="35" width="5" height="30">
+		    <animateTransform 
+			attributeName="transform" 
+			dur="1s" 
+			type="translate" 
+			values="0 5 ; 0 -5; 0 5" 
+			repeatCount="indefinite" 
+			begin="0.1"/>
+		</rect>
+		<rect x="40" y="35" width="5" height="30" >
+		    <animateTransform 
+			attributeName="transform" 
+			dur="1s" 
+			type="translate" 
+			values="0 5 ; 0 -5; 0 5" 
+			repeatCount="indefinite" 
+			begin="0.2"/>
+		</rect>
+		<rect x="50" y="35" width="5" height="30" >
+		    <animateTransform 
+			attributeName="transform" 
+			dur="1s" 
+			type="translate" 
+			values="0 5 ; 0 -5; 0 5" 
+			repeatCount="indefinite" 
+			begin="0.3"/>
+		</rect>
+		<rect x="60" y="35" width="5" height="30" >
+		    <animateTransform 
+			attributeName="transform" 
+			dur="1s" 
+			type="translate" 
+			values="0 5 ; 0 -5; 0 5"  
+			repeatCount="indefinite" 
+			begin="0.4"/>
+		</rect>
+		<rect x="70" y="35" width="5" height="30" >
+		    <animateTransform 
+			attributeName="transform" 
+				       dur="1s" 
+				       type="translate" 
+				       values="0 5 ; 0 -5; 0 5" 
+				       repeatCount="indefinite" 
+				       begin="0.5"/>
+		</rect>
+	    </g>
+	</svg>
+	<section></section>
+	<script>
+	 var input = document.getElementsByTagName("input")[0];
+	 var button = document.getElementsByTagName("button")[0];
+	 var section = document.getElementsByTagName("section")[0];
+	 var svg = document.getElementsByTagName("svg")[0];
+	 input.onkeypress = function(e){
+	     if (!e) e = window.event;
+	     var keyCode = e.keyCode || e.which;
+	     if (keyCode == '13'){
+		 button.click();
+		 return false;
+	     }
+	 }
+	 function search() {
+	     section.innerHTML = "";
+	     svg.style.display = "inline-block";
+	     var search = input.value;
+	     search = search.replace(/[^بتتجحخدذرزسشصضطظعغفقكلمنه]/g, "");
+	     var xmlHttp = new XMLHttpRequest();
+	     xmlHttp.onreadystatechange = function() {
+		 if (xmlHttp.readyState == 4) {
+		     if (xmlHttp.status == 200) {
+			 if (section.innerHTML = xmlHttp.responseText) 
+			     svg.style.display = "none";
+		     } else {
+			 svg.style.display = "none";
+		     }
+		 }
+	     }
+	     xmlHttp.open("GET", "s.php?search="+search, true);
+	     xmlHttp.send(null);
+	 }
+	 function f(a) {
+	     window.location.assign(a.value+".html");
+	 }
+	 var els = document.getElementsByTagName("textarea");
+	 var nodes = Array.prototype.slice.call(els);
+	 var lels = els.length;
+	 for (var el=0; el<lels; el++) {
+	     els[el].onclick = function() { k(this); };
+	 }
+	 var start = -1;
+	 var end = -1;
+	 function k(el) {
+	     document.onselectionchange = null;
+	     var selection = window.getSelection();
+	     if (start == -1) {
+		 var range = document.createRange();
+		 selection.removeAllRanges();
+		 range.selectNodeContents(el.parentNode.childNodes[1]);
+		 range.setEnd(el.parentNode.childNodes[2],0);
+		 selection.addRange(range);
+		 start = nodes.indexOf(el);
+	     } else {
+		 end = nodes.indexOf(el);
+		 var prv;
+		 var nxt;
+		 if (start<end)
+		     prv=start, nxt=end;
+		 else
+		     prv=end, nxt=start;
+		 var range = document.createRange();
+		 var el = els[prv];
+		 range.selectNodeContents(el.parentNode.childNodes[1]);
+		 var el = els[nxt];
+		 range.setEnd(el.parentNode.childNodes[2],0);
+		 selection.addRange(range);
+		 start = -1;
+	     }
+	 }
+	</script>
+    </main>
+</html>
